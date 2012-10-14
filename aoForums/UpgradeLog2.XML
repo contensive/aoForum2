@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="aoForums2">
+</Property><Property Name="Solution File" Value="C:\Users\jay\Documents\GitHub\aoForum2\aoForums\aoForums2.sln">
+</Property><Property Name="User Options File" Value="C:\Users\jay\Documents\GitHub\aoForum2\aoForums\aoForums2.suo">
+</Property><Property Name="Date" Value="Sunday, October 14, 2012">
+</Property><Property Name="Time" Value="9:25 AM">
+</Property><Property Name="Log Number" Value="2">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="aoForums2.sln" Description="File successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\aoForums2.sln">
+</Event><Event ErrorLevel="0" Project="" Source="aoForums2.suo" Description="File successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\aoForums2.suo">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="aoForums2.csproj" Description="Project file successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\aoForums2.csproj">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="aoForums2.csproj.user" Description="Project user file successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\aoForums2.csproj.user">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="ForumClass.cs" Description="File successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\ForumClass.cs">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="postHousekeepClass.cs" Description="File successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\postHousekeepClass.cs">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="sendDailyUpdatesClass.cs" Description="File successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\sendDailyUpdatesClass.cs">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="sendUpdatesClass.cs" Description="File successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\sendUpdatesClass.cs">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="threadHousekeepClass.cs" Description="File successfully backed up as C:\Users\jay\Documents\GitHub\aoForum2\aoForums\Backup1\threadHousekeepClass.cs">
+</Event><Event ErrorLevel="1" Project="aoForums2" Source="aoForums2.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="aoForums2.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="aoForums2" Source="aoForums2.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="aoForums2.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="aoForums2.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="aoForums2.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

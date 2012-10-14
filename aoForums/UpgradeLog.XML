@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="aoForums2">
+</Property><Property Name="Solution File" Value="C:\h\aoForums2\aoForums\aoForums2.sln">
+</Property><Property Name="User Options File" Value="C:\h\aoForums2\aoForums\aoForums2.suo">
+</Property><Property Name="Date" Value="Friday, February 17, 2012">
+</Property><Property Name="Time" Value="8:24 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="aoForums2.sln" Description="File successfully backed up as C:\h\aoForums2\aoForums\Backup\aoForums2.sln">
+</Event><Event ErrorLevel="0" Project="" Source="aoForums2.suo" Description="File successfully backed up as C:\h\aoForums2\aoForums\Backup\aoForums2.suo">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="aoForums2.csproj" Description="Project file successfully backed up as C:\h\aoForums2\aoForums\Backup\aoForums2.csproj">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="ForumClass.cs" Description="File successfully backed up as C:\h\aoForums2\aoForums\Backup\ForumClass.cs">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\h\aoForums2\aoForums\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="1" Project="aoForums2" Source="aoForums2.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="aoForums2.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="aoForums2" Source="aoForums2.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="aoForums2.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="aoForums2.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="aoForums2" Source="aoForums2.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

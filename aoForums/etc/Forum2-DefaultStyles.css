@@ -1,0 +1,105 @@
+/*
+* Forum 
+*/
+div.forumCon {
+    font-family: Tahoma,Calibri,Verdana,Geneva,sans-serif;
+	font-size: 13px;
+}
+.foBreadCrumb {
+	margin: 10px;
+	color:#444;
+	font-size: 90%;
+}
+.forumCon ul{
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+.forumCon > ul {
+	background-color: #fff;
+	border: 2px solid #9ab;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.forumCon > ul > li {
+	padding: 10px 20px 10px 10px;
+	border-bottom: 1px solid #888;
+}
+.forumCon li {
+	display:block;
+	vertical-align: top;
+}
+.forumCon .foHead{
+	color: #fff;
+	background-color: #9ab;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+}
+.forumCon .foData {
+	color: #444;
+}
+
+/*
+* Forum List
+*/
+.forumCon .foForums li.overview {
+	width:59%;
+	display: inline-block;
+}
+.forumCon .foForums div.overviewImage img {
+	float: left;
+	width: 80px;
+	height: 80px;
+	border: 0;
+}
+.forumCon .foForums li.threadsPosts{
+	width:19%;
+	display: inline-block;
+}
+.forumCon .foForums li.lastPost{
+	width:19%;
+	display: inline-block;
+}
+.forumCon .foForums div.overviewCopy a
+,.forumCon .foForums div.overviewCopy a:visited
+,.forumCon .foForums div.overviewCopy a:hover {
+	text-decoration: none;
+	color: #444;
+}
+.forumCon .foForums .lastTitle a
+,.forumCon .foForums .lastTitle a:visited
+,.forumCon .foForums .lastTitle a:hover {
+	text-decoration: none;
+	color: #444;
+}
+/*
+* Thread List
+*/
+h2.foThreadsTitle  {
+	margin: 0 10px 10px 10px;
+}
+.forumCon .foThreads li.overview {
+	width:59%;
+	display: inline-block;
+}
+.forumCon .foThreads li.repliesViews{
+	width:19%;
+	display: inline-block;
+}
+.forumCon .foThreads li.lastPost{
+	width:19%;
+	display: inline-block;
+}
+.forumCon .foThreads div.overviewImage img {
+	float: left;
+	width: 80px;
+	height: 80px;
+	border: 0;
+}
+.forumCon .foThreads div.overviewCopy a
+,.forumCon div.overviewCopy a:visited
+,.forumCon div.overviewCopy a:hover {
+	text-decoration: none;
+	color: #444;
+}
+
