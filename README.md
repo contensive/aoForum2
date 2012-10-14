@@ -1,4 +1,5 @@
 aoForum2
 ========
 
-Contensive Forum Addon 2
+This is my initial attempt to understand github and possibly convert our source control. Please excuse the mess.
+
