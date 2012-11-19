@@ -2062,65 +2062,87 @@ namespace aoForums2
             //bool isChecked;
             string sqlCriteria;
             int forumId;
+            int blockGroupId = 0;
+            bool tryAgain = false;
             //
             try
             {
-                //
-                // check required fields
-                //
-                if (cp.Doc.GetProperty("foFirst", "") == "")
+                if (cp.Site.GetBoolean("Forums - Allow Profile"))
                 {
-                    cp.UserError.Add("Your first name is required.");
-                }
-                if (cp.Doc.GetProperty("foLast", "") == "")
-                {
-                    cp.UserError.Add("Your last name is required.");
-                }
-                if (cp.Doc.GetProperty("foEmail", "") == "")
-                {
-                    cp.UserError.Add("Your email address is required.");
-                }
-                if (cp.UserError.OK())
-                {
-                    //
-                    // test for re-submit
-                    //
-                    if (cs.Open("people", "id=" + cp.User.Id, "", true, "", 1, 1))
+                    blockGroupId = cp.Site.GetInteger("Forums - Profile Block Update Group", "0");
+                    if(!cp.User.IsInGroupList(blockGroupId.ToString()))
                     {
-                        cs.SetField("firstName", cp.Doc.GetText("foFirst", ""));
-                        cs.SetField("lastName", cp.Doc.GetText("foLast", ""));
-                        cs.SetField("title", cp.Doc.GetText("foTitle", ""));
-                        cs.SetField("city", cp.Doc.GetText("foCity", ""));
-                        cs.SetField("state", cp.Doc.GetText("foState", ""));
-                        cs.SetField("email", cp.Doc.GetText("foEmail", ""));
-                        cs.SetField("nickname", cp.Doc.GetText("foNickname", ""));
+                        //
+                        // update profile edit fields
+                        //
+                        //
+                        // check required fields
+                        //
+                        if (cp.Doc.GetProperty("foFirst", "") == "")
+                        {
+                            cp.UserError.Add("Your first name is required.");
+                        }
+                        if (cp.Doc.GetProperty("foLast", "") == "")
+                        {
+                            cp.UserError.Add("Your last name is required.");
+                        }
+                        if (cp.Doc.GetProperty("foEmail", "") == "")
+                        {
+                            cp.UserError.Add("Your email address is required.");
+                        }
+                        if (cp.UserError.OK())
+                        {
+                            //
+                            // test for re-submit
+                            //
+                            if (cs.Open("people", "id=" + cp.User.Id, "", true, "", 1, 1))
+                            {
+                                cs.SetField("firstName", cp.Doc.GetText("foFirst", ""));
+                                cs.SetField("lastName", cp.Doc.GetText("foLast", ""));
+                                cs.SetField("title", cp.Doc.GetText("foTitle", ""));
+                                cs.SetField("city", cp.Doc.GetText("foCity", ""));
+                                cs.SetField("state", cp.Doc.GetText("foState", ""));
+                                cs.SetField("email", cp.Doc.GetText("foEmail", ""));
+                                cs.SetField("nickname", cp.Doc.GetText("foNickname", ""));
+                            }
+                            cs.Close();
+                        }
                     }
-                    cs.Close();
-                    nextFormId = formIdForumList;
+                }
+                if ((cp.UserError.OK())&(cp.Site.GetBoolean("Forums - Allow Notifications")))
+                {
                     //
-                    cnt = cp.Doc.GetInteger("foGroupCnt","0");
+                    // profile Notifications fields
+                    //
+                    cnt = cp.Doc.GetInteger("foGroupCnt", "0");
                     for (ptr = 0; ptr < cnt; ptr++)
                     {
                         forumId = cp.Doc.GetInteger("foGroupId" + ptr.ToString(), "0");
                         sqlCriteria = "(memberid=" + cp.User.Id.ToString() + ")and(forumid=" + forumId.ToString() + ")";
                         if (cp.Doc.GetBoolean("foGroup" + ptr.ToString(), "false"))
                         {
-                            if(!cs.Open("forum notification rules", sqlCriteria ,"",true,"",1,1))
+                            if (!cs.Open("forum notification rules", sqlCriteria, "", true, "", 1, 1))
                             {
                                 cs.Close();
                                 cs.Insert("forum notification rules");
-                                cs.SetField( "memberid", cp.User.Id.ToString() );
-                                cs.SetField( "forumid", forumId.ToString() );
+                                cs.SetField("memberid", cp.User.Id.ToString());
+                                cs.SetField("forumid", forumId.ToString());
                             }
                             cs.Close();
                         }
                         else
                         {
-                            cp.Db.ExecuteSQL( "delete from ccforumnotificationrules where " + sqlCriteria,"","","1","1");
+                            cp.Db.ExecuteSQL("delete from ccforumnotificationrules where " + sqlCriteria, "", "", "1", "1");
                         }
 
                     }
                 }
+                if (cp.UserError.OK())
+                {
+                    nextFormId = formIdForumList;
+                }
+                //
+            
             }
             catch (Exception e)
             {
@@ -2151,6 +2173,7 @@ namespace aoForums2
             string notificationForumIdList = "";
             int forumId = 0;
             bool isChecked = false;
+            int blockGroupId = 0;
             //string bodyInstructions;
             //
             try
@@ -2174,71 +2197,124 @@ namespace aoForums2
                     block.SetOuter(".foErrors", cp.UserError.GetList());
                 }
                 //
-                if (cs.Open("people", "id=" + cp.User.Id, "", true, "", 1, 1))
+                if (!cp.Site.GetBoolean("Forums - Allow Profile"))
                 {
-                    block.SetInner(".foFormRowFirst .foInput", "<input type=\"text\" name=\"foFirst\" value=\"" + cs.GetText("firstName") + "\">");
-                    block.SetInner(".foFormRowLast .foInput", "<input type=\"text\" name=\"foLast\" value=\"" + cs.GetText("lastName") + "\">");
-                    block.SetInner(".foFormRowTitle .foInput", "<input type=\"text\" name=\"foTitle\" value=\"" + cs.GetText("title") + "\">");
-                    block.SetInner(".foFormRowCity .foInput", "<input type=\"text\" name=\"foCity\" value=\"" + cs.GetText("city") + "\">");
-                    block.SetInner(".foFormRowState .foInput", "<input type=\"text\" name=\"foState\" value=\"" + cs.GetText("state") + "\">");
-                    block.SetInner(".foFormRowEmail .foInput", "<input type=\"text\" name=\"foEmail\" value=\"" + cs.GetText("email") + "\">");
-                    block.SetInner(".foFormRowNickname .foInput", "<input type=\"text\" name=\"foNickName\" value=\"" + cs.GetText("nickname") + "\">");
+                    //
+                    // disallow profile
+                    //
+                    block.SetOuter(".foEditFields", "");
                 }
-                //
-                li.Load(block.GetOuter(".foCheckListItem"));
-                cs.Close();
-                //
-                if (cs.OpenSQL("select forumId from ccForumNotificationRules where memberid=" + cp.User.Id))
+                else
                 {
-                    while (cs.OK())
+                    //
+                    // disallow profile
+                    //
+                    if (cs.Open("people", "id=" + cp.User.Id, "", true, "", 1, 1))
                     {
-                        notificationForumIdList += "," + cs.GetText("forumId");
-                        cs.GoNext();
+                        blockGroupId = cp.Site.GetInteger("Forums - Profile Block Update Group");
+                        if (cp.User.IsInGroupList(blockGroupId.ToString()))
+                        {
+                            //
+                            // display profile read-only
+                            //
+                            block.SetInner(".foFormRowFirst .foInput", cs.GetText("firstName") );
+                            block.SetInner(".foFormRowLast .foInput", cs.GetText("lastName") );
+                            block.SetInner(".foFormRowTitle .foInput", cs.GetText("title") );
+                            block.SetInner(".foFormRowCity .foInput", cs.GetText("city") );
+                            block.SetInner(".foFormRowState .foInput", cs.GetText("state") );
+                            block.SetInner(".foFormRowEmail .foInput",  cs.GetText("email") );
+                            block.SetInner(".foFormRowNickname .foInput", cs.GetText("nickname") );
+                            //block.SetInner(".foFormRowFirst .foInput", "<input readonly=\"readonly\" type=\"text\" name=\"foFirst\" value=\"" + cs.GetText("firstName") + "\">");
+                            //block.SetInner(".foFormRowLast .foInput", "<input readonly=\"readonly\" type=\"text\" name=\"foLast\" value=\"" + cs.GetText("lastName") + "\">");
+                            //block.SetInner(".foFormRowTitle .foInput", "<input readonly=\"readonly\" type=\"text\" name=\"foTitle\" value=\"" + cs.GetText("title") + "\">");
+                            //block.SetInner(".foFormRowCity .foInput", "<input readonly=\"readonly\" type=\"text\" name=\"foCity\" value=\"" + cs.GetText("city") + "\">");
+                            //block.SetInner(".foFormRowState .foInput", "<input readonly=\"readonly\" type=\"text\" name=\"foState\" value=\"" + cs.GetText("state") + "\">");
+                            //block.SetInner(".foFormRowEmail .foInput", "<input readonly=\"readonly\" type=\"text\" name=\"foEmail\" value=\"" + cs.GetText("email") + "\">");
+                            //block.SetInner(".foFormRowNickname .foInput", "<input readonly=\"readonly\" type=\"text\" name=\"foNickName\" value=\"" + cs.GetText("nickname") + "\">");
+                        }
+                        else
+                        {
+                            //
+                            // edit profile
+                            //
+                            block.SetInner(".foFormRowFirst .foInput", "<input type=\"text\" name=\"foFirst\" value=\"" + cs.GetText("firstName") + "\">");
+                            block.SetInner(".foFormRowLast .foInput", "<input type=\"text\" name=\"foLast\" value=\"" + cs.GetText("lastName") + "\">");
+                            block.SetInner(".foFormRowTitle .foInput", "<input type=\"text\" name=\"foTitle\" value=\"" + cs.GetText("title") + "\">");
+                            block.SetInner(".foFormRowCity .foInput", "<input type=\"text\" name=\"foCity\" value=\"" + cs.GetText("city") + "\">");
+                            block.SetInner(".foFormRowState .foInput", "<input type=\"text\" name=\"foState\" value=\"" + cs.GetText("state") + "\">");
+                            block.SetInner(".foFormRowEmail .foInput", "<input type=\"text\" name=\"foEmail\" value=\"" + cs.GetText("email") + "\">");
+                            block.SetInner(".foFormRowNickname .foInput", "<input type=\"text\" name=\"foNickName\" value=\"" + cs.GetText("nickname") + "\">");
+                        }
                     }
-                    notificationForumIdList = notificationForumIdList + ",";
+                    //
+                    cs.Close();
                 }
-                cs.Close();
-                //
-                if (cp.User.IsAdmin)
+                if (!cp.Site.GetBoolean("Forums - Allow Notifications"))
                 {
-                    sql = " select * from ccforums where (active<>0)";
-                }
-                else
-                {
-                    sql = " select f.*"
-                        + " from ((ccforums f"
-                        + " left join ccforumGroupRules g on g.forumId=f.id)"
-                        + " left join ccmemberrules m on m.groupId=g.groupId)"
-                        + " where (m.memberId=" + cp.User.Id.ToString() + ")and(f.active<>0)"
-                        + " union"
-                        + " select f.*"
-                        + " from ccforums f"
-                        + " where ((f.block is null)or(f.block=0))and(f.active<>0)"
-                        + "";
-                }
-                if (!cs.OpenSQL2( sql, "", 999, 1))
-                {
-                    block.SetOuter(".foCheckList", "");
+                    //
+                    // disallow notifications
+                    //
+                    block.SetOuter(".foNotificationFields", "");
                 }
                 else
                 {
-                    while (cs.OK())
+                    //
+                    // notifications
+                    //
+                    li.Load(block.GetOuter(".foCheckListItem"));
+                    //
+                    if (cs.OpenSQL("select forumId from ccForumNotificationRules where memberid=" + cp.User.Id))
                     {
-                        forumId = cs.GetInteger("id");
-                        isChecked = (notificationForumIdList.IndexOf(","+forumId.ToString()+",")>-1);
-                        forumName = cs.GetText("name");
-                        li.SetInner(".foCaption", forumName);
-                        copy = ""
-                            + cp.Html.CheckBox("foGroup" + ptr, isChecked, "", "")
-                            + cp.Html.Hidden("foGroupId" + ptr, cs.GetInteger("id").ToString(), "", "")
+                        while (cs.OK())
+                        {
+                            notificationForumIdList += "," + cs.GetText("forumId");
+                            cs.GoNext();
+                        }
+                        notificationForumIdList = notificationForumIdList + ",";
+                    }
+                    cs.Close();
+                    //
+                    if (cp.User.IsAdmin)
+                    {
+                        sql = " select * from ccforums where (active<>0)";
+                    }
+                    else
+                    {
+                        sql = " select f.*"
+                            + " from ((ccforums f"
+                            + " left join ccforumGroupRules g on g.forumId=f.id)"
+                            + " left join ccmemberrules m on m.groupId=g.groupId)"
+                            + " where (m.memberId=" + cp.User.Id.ToString() + ")and(f.active<>0)"
+                            + " union"
+                            + " select f.*"
+                            + " from ccforums f"
+                            + " where ((f.block is null)or(f.block=0))and(f.active<>0)"
                             + "";
-                        li.SetInner(".foInput", copy);
-                        list += li.GetHtml();
-                        ptr += 1;
-                        cs.GoNext();
                     }
-                    list += cp.Html.Hidden("foGroupCnt", ptr.ToString(), "", "");
-                    block.SetInner(".foCheckList", list);
+                    if (!cs.OpenSQL2( sql, "", 999, 1))
+                    {
+                        block.SetOuter(".foCheckList", "");
+                    }
+                    else
+                    {
+                        while (cs.OK())
+                        {
+                            forumId = cs.GetInteger("id");
+                            isChecked = (notificationForumIdList.IndexOf(","+forumId.ToString()+",")>-1);
+                            forumName = cs.GetText("name");
+                            li.SetInner(".foCaption", forumName);
+                            copy = ""
+                                + cp.Html.CheckBox("foGroup" + ptr, isChecked, "", "")
+                                + cp.Html.Hidden("foGroupId" + ptr, cs.GetInteger("id").ToString(), "", "")
+                                + "";
+                            li.SetInner(".foInput", copy);
+                            list += li.GetHtml();
+                            ptr += 1;
+                            cs.GoNext();
+                        }
+                        list += cp.Html.Hidden("foGroupCnt", ptr.ToString(), "", "");
+                        block.SetInner(".foCheckList", list);
+                    }
                 }
                 //
                 qs = rqs;

@@ -1,0 +1,73 @@
+<div class="forumCon">
+	<div class="foBreadCrumb">Forums</div>
+	<div class="foProfile">
+		<form id="foProfileForm" action="$formAction$" method="post" enctype="multipart/form-data">
+			<div class="foHead">Forum Profile</div>
+			<div class="foBody">
+				<div id="foHeader" class="foBodyInstructions">This is an editable instructions content box where you can tell the user how tofill out nd submit their profile.</div>
+				<div class="foErrors"></div>
+				<div class="foEditFields">
+					<ul class="foFormList">
+						<li class="foFormRowFirst">
+							<div class="foCaption">First*:</div>
+							<div class="foInput"><input type="text" name="foInputFirst" value="" /></div>
+						</li>
+						<li class="foFormRowLast">
+							<div class="foCaption">Last*:</div>
+							<div class="foInput"><input type="text" name="foInputLast" value="" /></div>
+						</li>
+						<li class="foFormRowTitle">
+							<div class="foCaption">Title:</div>
+							<div class="foInput"><input type="text" name="foInputTitle" value="" /></div>
+						</li>
+						<li class="foFormRowCity">
+							<div class="foCaption">City:</div>
+							<div class="foInput"><input type="text" name="foInputCity" value="" /></div>
+						</li>
+						<li class="foFormRowState">
+							<div class="foCaption">State:</div>
+							<div class="foInput"><input type="text" name="foInputState" value="" /></div>
+						</li>
+						<li class="foFormRowEmail">
+							<div class="foCaption">Email Address*:</div>
+							<div class="foInput"><input type="text" name="foInputEmail" value="" /></div>
+						</li>
+						<!-- 
+						<li class="foFormRowPassword">
+							<div class="foCaption">Password:</div>
+							<div class="foInput"><input type="password" name="foInputPassword" value="" /></div>
+						</li>
+						<li class="foFormRowConfirm">
+							<div class="foCaption">Confirm Password:</div>
+							<div class="foInput"><input type="password" name="foInputConfirm" value="" /></div>
+						</li>
+						-->
+						<li class="foFormRowNickname">
+							<div class="foCaption">Display Name:</div>
+							<div class="foInput"><input type="text" name="foInputNickname" value="" /></div>
+						</li>
+					</ul>
+				</div>
+				<div class="foNotificationFields">
+					<h2>Forum Notifications</h2>
+					<div id="foFooter" class="foBodyInstructions">Choose from the list of forums below to be notified of a new post or comment.</div>
+					<ul class="foCheckList">
+						<li class="foCheckListItem">
+							<div class="foInput">
+								<input type="checkbox" name="foGroup0" value="1">
+								<input type="hidden" name="foGroupId0" value="1">
+							</div>
+							<div class="foCaption">Forum fpo</div>
+						</li>
+					</ul>
+				</div>
+				<div class="foButtonBar">
+					<a id="foButtonUpdate" href="javascript:document.getElementById('foProfileForm').submit();">Update Profile</a>
+					<a id="foButtonCancel" href="#">Cancel</a>
+				</div>
+				<input class="foSourceForm" type="hidden" name="">
+				<input class="foCreateKey" type="hidden" name="">
+			</div>
+		</form>
+	</div>
+</div>

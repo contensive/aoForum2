@@ -24,7 +24,7 @@ namespace aoForums2
             DateTime rightNow = DateTime.Now ;
             DateTime today = rightNow.Date;
             DateTime yesterday = today.AddDays(-1);
-            string sqlCriteria = "";
+            //string sqlCriteria = "";
             string sqlDateLastEmail = "";
             //
             try

@@ -1,0 +1,10 @@
+<Form>
+	<Description>Settings that affect the Forum Addon</Description>
+	<HelpLink>http://www.contensive.com/Forum-Addon</HelpLink>
+	<Tab name="Forums" heading="Forums" description="">
+		<SiteProperty caption="Segregate Private Forums" name="Forums - Segregate Private Forums" ReadOnly="0" Type="boolean" Selector="" Description="When checked, forums will be divided into two lists, Public Forums and Private Forums.">0</SiteProperty>
+		<SiteProperty caption="Allow Profile" name="Forums - Allow Profile" ReadOnly="0" Type="boolean" Selector="" Description="When checked, authenticated users will see an update profile button. They can manage their identity and signup for forum update emails.">1</SiteProperty>
+		<SiteProperty caption="Profile Block Update Group" name="Forums - Profile Block Update Group" ReadOnly="0" Type="integer" Selector="[None:0|listid(Groups)]" Description="When Allow Profile is checked, people in this group can not update their profile.">0</SiteProperty>
+		<SiteProperty caption="Allow Notifications" name="Forums - Allow Notifications" ReadOnly="0" Type="boolean" Selector="" Description="When checked, the profile form will include a section for Forum Notifications. Forum Notifications allow users to be notified of new posts or comments to select forums.">1</SiteProperty>
+	</Tab>
+</Form>
